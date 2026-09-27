@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme-r</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="memer.css">
+    </style>
+</head>
+<body>
+
+   
+  <header>
+    <div class="brand">
+      <div class="brand-icon">Meme-r</div>
+    </div>
+  </header>
+
+  <main>
+   
+    <div id="captureStage" class="card">
+      <h1 class="card-title">Take this</h1>
+      <p class="card-desc">Align your face inside the circle, then press capture. trust me bro..</p>
+
+      <div class="viewport-container">
+        <video id="webcam" autoplay playsinline muted></video>
+        <div id="faceOverlay" class="face-overlay">
+          <div id="guideRing" class="face-guide">
+            <span class="face-guide-text">chin here..</span>
+          </div>
+        </div>
+        <div class="scanlines"></div>
+      </div>
+
+      
+      <div class="adjustments-panel">
+        <div class="slider-control">
+          <label for="zoomSlider">Face Cutout Zoom</label>
+          <input type="range" id="zoomSlider" min="0.5" max="2.0" step="0.05" value="1.0">
+        </div>
+        <div class="slider-control">
+          <label for="offsetYSlider">Vertical Offset</label>
+          <input type="range" id="offsetYSlider" min="-100" max="100" step="2" value="0">
+        </div>
+        <div class="slider-control">
+          <label for="offsetXSlider">Horizontal Offset</label>
+          <input type="range" id="offsetXSlider" min="-100" max="100" step="2" value="0">
+        </div>
+      </div>
+
+      <div class="controls-group">
+        <button id="captureBtn" class="btn btn-primary">
+          <span>CAPTURE </span>
+        </button>
+        <label for="fileUpload" class="btn btn-secondary" style="margin:0;">
+          <span>Upload Photo</span>
+          <input type="file" id="fileUpload" accept="image/*" style="display:none;">
+        </label>
+      </div>
+    </div>
+
+    
+    <div id="resultStage" class="card hidden">
+      <h1 class="card-title" style="color: var(--accent-green);">★ GG FERKING EZ ★</h1>
+      <p class="card-desc"></p>
+
+      <div class="viewport-container">
+        <canvas id="memeCanvas"></canvas>
+        <div class="scanlines"></div>
+      </div>
+
+      <div class="controls-group">
+        <button id="toggleAudioBtn" class="btn btn-secondary">
+          <span id="audioStatusText">mute audio</span>
+        </button>
+        <button id="retakeBtn" class="btn btn-secondary">
+          <span> retake Photo</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <video
+  id="memeVideo"
+  src="memevid.mp4"
+  loop
+  playsinline
+  preload="auto"
+  style="display: none;">
+</video>
+
+
+
+  <canvas id="cropCanvas" class="hidden"></canvas>
+
+  <script src="memer.js"></script>
+</body>
+</html>
